@@ -32,8 +32,9 @@ if 'years_experience' not in st.session_state:
     st.session_state.years_experience = 0  
 if 'avg_score' not in st.session_state:
     st.session_state.avg_score = 0
-if 'clear_leaderboard' not in st.session_state:
-    st.session_stage.clear_leaderboard=[]
+if "clear_leaderboard" not in st.session_state:
+    st.session_state.clear_leaderboard = False
+
 
 
 # --------------- INTRODUCTION ----------------
@@ -221,11 +222,15 @@ elif st.session_state.stage == 'questions':
                 avg_score = round((sum(scores) / len(scores)) * 100)
                 insert_score(name, email, avg_score, tech, timestamp)
             st.session_state.feedback = {}
+            
+if st.button("🧹 Clear Leaderboard"):
+    clear_leaderboard()
+    st.session_state.clear_leaderboard = True
+    st.success("Leaderboard cleared!")
             st.session_state.stage = 'clear_leaderboard'
             st.rerun()
 
-elif st.session_stage.stage=='clear_leaderboard':
-    clear_leaderboard()
+
 # --------------- LEADERBOARD ----------------
 elif st.session_state.stage == 'leaderboard':
     st.subheader("🏆 Leaderboard")
