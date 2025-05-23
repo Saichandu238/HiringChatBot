@@ -3,7 +3,7 @@ from prompt import intro_prompt
 from questions_generator import generate_questions
 from feed_back import get_feedback
 from database import init_db, user_exists, save_user
-from table_fields import create_leaderboard_table, insert_score, get_leaderboard
+from table_fields import create_leaderboard_table, insert_score, get_leaderboard,clear_leaderboard
 from datetime import datetime
 from collections import defaultdict
 timestamp = datetime.now()
@@ -219,9 +219,11 @@ elif st.session_state.stage == 'questions':
                 avg_score = round((sum(scores) / len(scores)) * 100)
                 insert_score(name, email, avg_score, tech, timestamp)
             st.session_state.feedback = {}
-            st.session_state.stage = 'leaderboard'
+            st.session_state.stage = 'clear_leaderboard'
             st.rerun()
 
+elif st.session_stage.stage=='clear_leaderboard':
+    clear_leaderboard()
 # --------------- LEADERBOARD ----------------
 elif st.session_state.stage == 'leaderboard':
     st.subheader("🏆 Leaderboard")
