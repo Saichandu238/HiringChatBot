@@ -25,8 +25,13 @@ def insert_score(name, email, score, tech, timestamp):
     conn.commit()
     conn.close()    
 
-clear_leaderboard()
-leaderboard = get_leaderboard()
+def clear_leaderboard():
+    conn = sqlite3.connect("leader.db")
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM marks")
+    conn.commit()
+    conn.close()
+
 
 def get_leaderboard(top_n=100):
     conn = sqlite3.connect("leader.db")
