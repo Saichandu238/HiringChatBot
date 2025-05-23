@@ -15,11 +15,7 @@ def create_leaderboard_table():
         )
     """)
     conn.commit()
-    conn.close()
-    
-    
-    
-    
+    conn.close()    
     
 def insert_score(name, email, score, tech, timestamp):
     conn = sqlite3.connect("leader.db")
@@ -27,32 +23,7 @@ def insert_score(name, email, score, tech, timestamp):
     cursor.execute("INSERT INTO marks (name, email,score, technology, timestamp) VALUES (?, ?, ?, ?, ?)",
               (name, email, score, tech, timestamp))
     conn.commit()
-    conn.close()
-
-    
-    
-    
-    
-# def insert_score(email, score, tech, timestamp):
-#     conn = sqlite3.connect("candidates.db")
-#     cursor = conn.cursor()
-#     cursor.execute("""
-#         UPDATE candidates
-#         SET score = ?, technology = ?, timestamp = ?
-#         WHERE email = ?
-#     """, (score, tech, timestamp, email))  # ✅ Correct order
-#     conn.commit()
-#     conn.close()
-
-
-# def insert_score(email,score, tech, timestamp):
-#     conn = sqlite3.connect("candidates.db")
-#     cursor = conn.cursor()
-#     cursor.execute("UPDATE candidates SET score=?, technology=?, timestamp=? WHERE email= ?", 
-#                    (score, tech, timestamp, email))
-#     conn.commit()
-#     conn.close()
-    
+    conn.close()    
     
 def get_leaderboard(top_n=10):
     conn = sqlite3.connect("leader.db")
