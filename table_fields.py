@@ -25,7 +25,7 @@ def insert_score(name, email, score, tech, timestamp):
     conn.commit()
     conn.close()    
     
-def get_leaderboard(top_n=10):
+def get_leaderboard(top_n=100):
     conn = sqlite3.connect("leader.db")
     cursor = conn.cursor()
     cursor.execute("SELECT name, email, technology, score, timestamp FROM marks ORDER BY score DESC LIMIT ?", 
