@@ -32,6 +32,8 @@ if 'years_experience' not in st.session_state:
     st.session_state.years_experience = 0  
 if 'avg_score' not in st.session_state:
     st.session_state.avg_score = 0
+if 'clear_leaderboard' not in st.session_state:
+    st.session_stage.clear_leaderboard=[]
 
 
 # --------------- INTRODUCTION ----------------
