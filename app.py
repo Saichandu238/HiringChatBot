@@ -197,6 +197,10 @@ elif st.session_state.stage == 'questions':
             st.markdown("====="*20)
 
     # End chat button: save score and show leaderboard
+    if st.button("🧹 Clear Leaderboard"):
+        clear_leaderboard()
+        st.session_state.clear_leaderboard = True
+        st.success("Leaderboard cleared!")
     if st.button("End Chat", key="end_chat"):
         total_questions = len(st.session_state.answers)
         if total_questions == 0:
@@ -222,12 +226,7 @@ elif st.session_state.stage == 'questions':
                 avg_score = round((sum(scores) / len(scores)) * 100)
                 insert_score(name, email, avg_score, tech, timestamp)
             st.session_state.feedback = {}
-            
-if st.button("🧹 Clear Leaderboard"):
-    clear_leaderboard()
-    st.session_state.clear_leaderboard = True
-    st.success("Leaderboard cleared!")
-            st.session_state.stage = 'clear_leaderboard'
+            st.session_state.stage = 'leaderboard'
             st.rerun()
 
 
