@@ -200,7 +200,7 @@ elif st.session_state.stage == 'questions':
     # if st.button("🧹 Clear Leaderboard"):
     #     clear_leaderboard()
     #     st.session_state.clear_leaderboard = True
-        st.success("Leaderboard cleared!")
+        # st.success("Leaderboard cleared!")
     if st.button("End Chat", key="end_chat"):
         total_questions = len(st.session_state.answers)
         if total_questions == 0:
