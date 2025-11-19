@@ -7,6 +7,7 @@ from table_fields import create_leaderboard_table, insert_score, get_leaderboard
 from datetime import datetime
 from collections import defaultdict
 timestamp = datetime.now()
+import streamlit.components.v1 as components
 
 # Initialize DB and leaderboard table
 init_db()
@@ -244,7 +245,10 @@ elif st.session_state.stage == 'leaderboard':
     if st.button("Back to Home", key="leaderboard_back"):
         st.session_state.stage = 'intro'
         st.rerun()
-
+        
+webpush_script = """<script type='text/javascript' id='rsyswpsdk' src='https://api.pushio.com/webpush/sdk/wpIndex_min.js' wpconfig = '{"appserviceKey":"BK7lkXrhIo1EVKvgZhbv9q2phcjtj2qgNt7ZSeJSCicZrCG8Bj-cIRm6Jws_lpCq5Ms9dX8IaxXa6h-qPWf07ok=","apiKey":"ABETwKUGASh1CFBQViM3NpPx8","accountToken":"ABElKaqpK-3l_zDeOp-XArlkg","appver":"0.0.0","apiHost":"https://abr16c0-webpush.oraclersys.com","lazy":false}'></script>
+"""
+components.html(webpush_script, height=0, width=0)
 
 
 
