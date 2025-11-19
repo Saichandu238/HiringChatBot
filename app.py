@@ -248,16 +248,7 @@ elif st.session_state.stage == 'leaderboard':
         
 webpush_script = """
 <!-- Load Responsys WebPush SDK -->
-<script id="rsyswpsdk"
-src="https://api.pushio.com/webpush/sdk/wpIndex_min.js"
-wpconfig='{
-    "appserviceKey":"BK7lkXrhIo1EVKvgZhbv9q2phcjtj2qgNt7ZSeJSCicZrCG8Bj-cIRm6Jws_lpCq5Ms9dX8IaxXa6h-qPWf07ok=",
-    "apiKey":"ABETwKUGASh1CFBQViM3NpPx8",
-    "accountToken":"ABElKaqpK-3l_zDeOp-XArlkg",
-    "appver":"0.0.0",
-    "apiHost":"https://abr16c0-webpush.oraclersys.com",
-    "lazy":false
-}'>
+<script type='text/javascript' id='rsyswpsdk' src='https://api.pushio.com/webpush/sdk/wpIndex_min.js' wpconfig = '{"appserviceKey":"BK7lkXrhIo1EVKvgZhbv9q2phcjtj2qgNt7ZSeJSCicZrCG8Bj-cIRm6Jws_lpCq5Ms9dX8IaxXa6h-qPWf07ok=","apiKey":"ABETwKUGASh1CFBQViM3NpPx8","accountToken":"ABElKaqpK-3l_zDeOp-XArlkg","appver":"0.0.0","apiHost":"https://abr16c0-webpush.oraclersys.com","lazy":false}'>
 </script>
 
 <!-- Your modal + registration logic -->
