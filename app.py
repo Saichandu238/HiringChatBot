@@ -305,8 +305,15 @@ document.addEventListener("DOMContentLoaded", function() {
             webPushManagerAPI.register();
         };
 
-        webPushManagerAPI.ready().then(function() {
-            console.log("SDK Ready");
+        document.addEventListener("webPushManagerAPIReady", function () {
+            console.log("SDK Ready (EVENT)");
+            
+            webPushManagerAPI.registerBrowsers("Chrome","Firefox","Safari","OP","Edg");
+        
+            if (webPushManagerAPI.showDoubleOptInPrompt()) {
+                modal.style.display = "block";
+            }
+        });
 
             webPushManagerAPI.registerBrowsers("Chrome","Firefox","Safari","OP","Edg");
 
